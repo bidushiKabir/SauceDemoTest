@@ -1,3 +1,5 @@
+import static org.junit.Assert.fail;
+
 import java.time.Duration;
 import java.util.List;
 import java.util.Locale;
@@ -7,6 +9,7 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
+import org.junit.jupiter.api.DisplayName;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -15,6 +18,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Wait;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+@DisplayName("Sause Demo Usability Testing")
 public class SuceDemoTest {
 	
 	private static WebDriver driver;
@@ -75,6 +79,7 @@ public class SuceDemoTest {
 	
 	@Test
  	public void loginStandard () {
+		try {
 		// finding and setting the user name
 		setKeyById ( "user-name", usrStan );
 		
@@ -89,10 +94,14 @@ public class SuceDemoTest {
 		
 		// if login successful then we should see the url in the inventory
 		Assert.assertEquals( "https://www.saucedemo.com/inventory.html", url );
+		} catch ( Exception ex ) {
+			fail ( "Something unexpected happend" );
+		}
 	}
 	
 	@Test
 	public void loginLocked () {
+		try {
 		// finding and setting the user name
 		setKeyById ( "user-name", usrLock );
 		
@@ -108,10 +117,14 @@ public class SuceDemoTest {
 		
 		// if login successful then we should see the url in the inventory
 		Assert.assertNotEquals( "https://www.saucedemo.com/inventory.html", url );
+		} catch ( Exception ex ) {
+			fail ( "Something unexpected happend" );
+		}
 	}
 	
 	@Test
 	public void loginProblem () {
+		try {
 		// finding and setting the user name
 		setKeyById ( "user-name", usrProb );
 		
@@ -127,10 +140,14 @@ public class SuceDemoTest {
 		
 		// if login successful then we should see the url in the inventory
 		Assert.assertEquals( "https://www.saucedemo.com/inventory.html", url );
+		} catch ( Exception ex ) {
+			fail ( "Something unexpected happend" );
+		}
 	}
 	
 	@Test
 	public void loginGlitch () {
+		try {
 		// finding and setting the user name
 		setKeyById ( "user-name", usrGlit );
 		
@@ -146,10 +163,14 @@ public class SuceDemoTest {
 		
 		// if login successful then we should see the url in the inventory
 		Assert.assertEquals( "https://www.saucedemo.com/inventory.html", url );
+		} catch ( Exception ex ) {
+			fail ( "Something unexpected happend" );
+		}
 	}
 
 	@Test
 	public void logoutStandard () {
+		try {
 		// to test login firstly we must login first
 		loginStandard ();
 		
@@ -167,10 +188,14 @@ public class SuceDemoTest {
 		
 		// checking if the logout was successful and link is changed
 		Assert.assertEquals ( "https://www.saucedemo.com/", url );
+		} catch ( Exception ex ) {
+			fail ( "Something unexpected happend" );
+		}
 	}
 	
 	@Test
 	public void logoutLocked () {
+		try {
 		// to test login firstly we must login first
 		loginLocked ();
 		
@@ -188,10 +213,14 @@ public class SuceDemoTest {
 		
 		// checking if the logout was successful and link is changed
 		Assert.assertEquals ( "https://www.saucedemo.com/", url );
+		} catch ( Exception ex ) {
+			fail ( "Something unexpected happend" );
+		}
 	}
 	
 	@Test
 	public void logoutProblem () {
+		try {
 		// to test login firstly we must login first
 		loginProblem ();
 		
@@ -209,10 +238,14 @@ public class SuceDemoTest {
 		
 		// checking if the logout was successful and link is changed
 		Assert.assertEquals ( "https://www.saucedemo.com/", url );
+		} catch ( Exception ex ) {
+			fail ( "Something unexpected happend" );
+		}
 	}
 
 	@Test
 	public void logoutGlitch () {
+		try {
 		// to test login firstly we must login first
 		loginGlitch ();
 		
@@ -230,10 +263,14 @@ public class SuceDemoTest {
 		
 		// checking if the logout was successful and link is changed
 		Assert.assertEquals ( "https://www.saucedemo.com/", url );
+		} catch ( Exception ex ) {
+			fail ( "Something unexpected happend" );
+		}
 	}
 
 	@Test
 	public void addToCartTestStandard () {
+		try {
 		// using the standard user for this test
 		loginStandard ();
 		
@@ -269,10 +306,14 @@ public class SuceDemoTest {
 		
 		// verifying the string message
 		Assert.assertEquals ( "Thank you for your order!", s );
+		} catch ( Exception ex ) {
+			fail ( "Something unexpected happend" );
+		}
 	}
 	
 	@Test
 	public void addToCartTestLocked () {
+		try {
 		// using the Locked user for this test
 		loginLocked ();
 		
@@ -308,10 +349,14 @@ public class SuceDemoTest {
 		
 		// verifying the string message
 		Assert.assertEquals ( "Thank you for your order!", s );
+		} catch ( Exception ex ) {
+			fail ( "Something unexpected happend" );
+		}
 	}
 	
 	@Test	
 	public void addToCartTestProblem () {
+		try {
 		// using the standard user for this test
 		loginProblem ();
 		
@@ -347,10 +392,14 @@ public class SuceDemoTest {
 		
 		// verifying the string message
 		Assert.assertEquals ( "Thank you for your order!", s );
+		} catch ( Exception ex ) {
+			fail ( "Something unexpected happend" );
+		}
 	}
 		
 	@Test
 	public void addToCartTestGlitch () {
+		try {
 		// using the standard user for this test
 		loginGlitch ();
 		
@@ -386,6 +435,9 @@ public class SuceDemoTest {
 		
 		// verifying the string message
 		Assert.assertEquals ( "Thank you for your order!", s );
+		} catch ( Exception ex ) {
+			fail ( "Something unexpected happend" );
+		}
 	}
 		
 }
